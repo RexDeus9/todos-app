@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        ssh-keyscan -H $PRODUCTION_IP_ADRESSS >> /var/lib/jenkins/.ssh/known_hosts
+                        ssh-keyscan -H ${PRODUCTION_IP_ADDRESS} >> /var/lib/jenkins/.ssh/known_hosts || true
                     '''
                 }
             }
