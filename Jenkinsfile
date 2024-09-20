@@ -32,13 +32,7 @@ pipeline {
             }
         }
 
-        stage('Stop the App') {
-            steps {
-                script {
-                    sh 'pm2 stop todos-app'
-                }
-            }
-        }  
+        
 
         stage('Add Host to known_hosts') {
             steps {
