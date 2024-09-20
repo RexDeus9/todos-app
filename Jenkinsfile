@@ -60,7 +60,7 @@ pipeline {
         sh '''
             echo "Connecting to: $PRODUCTION_IP_ADDRESS"  # Debugging output
 
-            ssh -v -i $DEPLOY_SSH_KEY ubuntu@$PRODUCTION_IP_ADDRESS '
+            ssh -i "test.pem" ubuntu@ec2-13-235-91-89.ap-south-1.compute.amazonaws.com'
                 if [ ! -d "todos-app" ]; then
                     git clone https://github.com/AhmadMazaal/todos-app.git todos-app
                     cd todos-app
