@@ -53,7 +53,7 @@ pipeline {
       stage('Deploy') {
     environment {
         DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
-        PRODUCTION_IP_ADDRESS = 'ec2-35-154-163-254.ap-south-1.compute.amazonaws.com' // Set your actual IP address here or ensure it’s defined elsewhere
+        PRODUCTION_IP_ADDRESS = 'ec2-13-235-91-89.ap-south-1.compute.amazonaws.com' // Set your actual IP address here or ensure it’s defined elsewhere
     }
 
     steps {
