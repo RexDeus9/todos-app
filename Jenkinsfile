@@ -50,33 +50,35 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-                environment {
-                    DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
-                }
+      stage('Deploy') {
+    environment {
+        DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
+        PRODUCTION_IP_ADDRESS = 'ec2-35-154-163-254.ap-south-1.compute.amazonaws.com' // Set your actual IP address here or ensure it’s defined elsewhere
+    }
 
-                steps {
-                    sh '''
-                        ssh -v -i $DEPLOY_SSH_KEY ubuntu@$PRODUCTION_IP_ADRESSS '
-                            
-                            if [ ! -d "todos-app" ]; then
-                                git clone https://github.com/AhmadMazaal/todos-app.git todos-app
-                                cd todos-app
-                            else
-                                cd todos-app
-                                git pull
-                            fi
+    steps {
+        sh '''
+            echo "Connecting to: $PRODUCTION_IP_ADDRESS"  # Debugging output
 
-                            yarn install
-                            
-                            if pm2 describe todos-app > /dev/null ; then
-                            pm2 restart todos-app
-                            else
-                                yarn start:pm2
-                            fi
-                        '
-                    '''
-                }
-            }
+            ssh -v -i $DEPLOY_SSH_KEY ubuntu@$PRODUCTION_IP_ADDRESS '
+                if [ ! -d "todos-app" ]; then
+                    git clone https://github.com/AhmadMazaal/todos-app.git todos-app
+                    cd todos-app
+                else
+                    cd todos-app
+                    git pull
+                fi
+
+                yarn install
+
+                if pm2 describe todos-app > /dev/null ; then
+                    pm2 restart todos-app
+                else
+                    yarn start:pm2
+                fi
+            '
+        '''
+    }
+}
     }
 }
