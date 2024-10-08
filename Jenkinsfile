@@ -5,7 +5,6 @@ pipeline {
         nodejs "nodejs"
     }
 
-
     stages {
         stage('Install Packages') {
             steps {
@@ -19,6 +18,14 @@ pipeline {
             steps {
                 script {
                     sh 'yarn global add pm2'
+                }
+            }
+        }
+
+        stage('Check PRODUCTION_IP_ADRESSS') {
+            steps {
+                script {
+                    sh echo -e PRODUCTION_IP_ADRESSS: $PRODUCTION_IP_ADRESSS >> /var/lib/jenkins/PRODUCTION_IP_ADRESSS.txt
                 }
             }
         }
@@ -51,9 +58,7 @@ pipeline {
         stage('Add Host to known_hosts') {
             steps {
                 script {
-                    sh '''
-                        ssh-keyscan -H $PRODUCTION_IP_ADRESSS >> /var/lib/jenkins/.ssh/known_hosts
-                    '''
+                    sh ssh-keyscan -H $PRODUCTION_IP_ADRESSS >> /var/lib/jenkins/.ssh/known_hosts
                 }
             }
         }
