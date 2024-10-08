@@ -15,6 +15,14 @@ pipeline {
             }
         }
 
+        stage('Install PM2') {
+            steps {
+                script {
+                    sh 'yarn global add pm2'
+                }
+            }
+        }
+
         stage('Run the App') {
             steps {
                 script {
