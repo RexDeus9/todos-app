@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     tools {
         nodejs "nodejs"
     }
@@ -38,7 +38,7 @@ pipeline {
                     sh 'pm2 stop todos-app'
                 }
             }
-        }  
+        }
 
         stage('Add Host to known_hosts') {
             steps {
@@ -58,9 +58,9 @@ pipeline {
                 steps {
                     sh '''
                         ssh -v -i $DEPLOY_SSH_KEY ubuntu@$PRODUCTION_IP_ADRESSS '
-                            
+
                             if [ ! -d "todos-app" ]; then
-                                git clone https://github.com/AhmadMazaal/todos-app.git todos-app
+                                git clone https://github.com/RexDeus9/todos-app todos-app
                                 cd todos-app
                             else
                                 cd todos-app
@@ -68,7 +68,7 @@ pipeline {
                             fi
 
                             yarn install
-                            
+
                             if pm2 describe todos-app > /dev/null ; then
                             pm2 restart todos-app
                             else
