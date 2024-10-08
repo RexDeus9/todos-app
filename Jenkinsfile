@@ -25,7 +25,7 @@ pipeline {
         stage('Check PRODUCTION_IP_ADRESSS') {
             steps {
                 script {
-                    sh echo "PRODUCTION_IP_ADRESSS= $PRODUCTION_IP_ADRESSS" >> /var/lib/jenkins/PRODUCTION_IP_ADRESSS.txt
+                    sh echo "PRODUCTION_IP_ADRESS= $PRODUCTION_IP_ADRESS" >> /var/lib/jenkins/PRODUCTION_IP_ADRESS.txt
                 }
             }
         }
@@ -58,7 +58,7 @@ pipeline {
         stage('Add Host to known_hosts') {
             steps {
                 script {
-                    sh ssh-keyscan -H $PRODUCTION_IP_ADRESSS >> /var/lib/jenkins/.ssh/known_hosts
+                    sh ssh-keyscan -H $PRODUCTION_IP_ADRESS >> /var/lib/jenkins/.ssh/known_hosts
                 }
             }
         }
@@ -83,7 +83,7 @@ pipeline {
                             yarn install
 
                             if pm2 describe todos-app > /dev/null ; then
-                            pm2 restart todos-app
+                                pm2 restart todos-app
                             else
                                 yarn start:pm2
                             fi
