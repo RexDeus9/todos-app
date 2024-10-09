@@ -80,9 +80,6 @@ pipeline {
         }
 
         stage('Deploy') {
-                environment {
-                    DEPLOY_SSH_KEY = 'credentials(AWS_INSTANCE_SSH)'
-                }
                 steps {
                     sh '''
                         //ssh -v -i $DEPLOY_SSH_KEY ubuntu@$IP_ADDRESS '
