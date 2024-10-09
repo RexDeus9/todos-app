@@ -71,7 +71,8 @@ pipeline {
         }
         stage('Deploy') {
                 environment {
-                    DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
+                    //DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
+                    DEPLOY_SSH_KEY = 'AWS_INSTANCE_SSH'
                 }
                 steps {
                     echo DEPLOY_SSH_KEY=$DEPLOY_SSH_KEY
