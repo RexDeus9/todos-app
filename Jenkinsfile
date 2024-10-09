@@ -58,6 +58,7 @@ pipeline {
         stage('Add Host to known_hosts') {
             steps {
                 script {
+                    sh 'sleep 2'
                     //sh ssh-keyscan -H {$PRODUCTION_IP_ADDRESS} >> /var/lib/jenkins/.ssh/known_hosts
                 }
             }
