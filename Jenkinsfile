@@ -69,6 +69,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh 'ls -al > ~/_files.txt'
+            }
+        }
+/*
         stage('Deploy') {
                 environment {
                     //DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
@@ -98,5 +105,6 @@ pipeline {
                     '''
                 }
         }
+*/
     }
 }
