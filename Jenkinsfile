@@ -74,7 +74,6 @@ pipeline {
             steps {
                 script {
                     sh 'pwd > ~/_files.txt'
-                    sh 'echo '________' >> ~/_files.txt'
                     sh 'ls -al >> ~/_files.txt'
                 }
             }
