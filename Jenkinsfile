@@ -22,10 +22,10 @@ pipeline {
             }
         }
 
-        stage('Check PRODUCTION_IP_ADRESS') {
+        stage('Check PRODUCTION_IP_ADDRESS') {
             steps {
                 script {
-                    sh 'echo "PRODUCTION_IP_ADRESS= $PRODUCTION_IP_ADRESS" >> /var/lib/jenkins/PRODUCTION_IP_ADRESS.txt'
+                    sh 'echo "PRODUCTION_IP_ADDRESS= $PRODUCTION_IP_ADDRESS"'
                 }
             }
         }
@@ -58,7 +58,7 @@ pipeline {
         stage('Add Host to known_hosts') {
             steps {
                 script {
-                    sh ssh-keyscan -H {$PRODUCTION_IP_ADRESS} >> /var/lib/jenkins/.ssh/known_hosts
+                    sh ssh-keyscan -H {$PRODUCTION_IP_ADDRESS} >> /var/lib/jenkins/.ssh/known_hosts
                 }
             }
         }
@@ -70,7 +70,7 @@ pipeline {
 
                 steps {
                     sh '''
-                        ssh -v -i $DEPLOY_SSH_KEY ubuntu@$PRODUCTION_IP_ADRESSS '
+                        ssh -v -i $DEPLOY_SSH_KEY ubuntu@$PRODUCTION_IP_ADDRESS '
 
                             if [ ! -d "todos-app" ]; then
                                 git clone https://github.com/RexDeus9/todos-app todos-app
