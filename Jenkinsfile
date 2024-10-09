@@ -75,7 +75,6 @@ pipeline {
                     DEPLOY_SSH_KEY = 'AWS_INSTANCE_SSH'
                 }
                 steps {
-                    echo DEPLOY_SSH_KEY=$DEPLOY_SSH_KEY
                     sh '''
                         //ssh -v -i $DEPLOY_SSH_KEY ubuntu@$IP_ADDRESS '
                         ssh -i "~/.aws/jenkins-key.pem" ubuntu@ec2-3-85-183-54.compute-1.amazonaws.com
