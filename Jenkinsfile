@@ -25,7 +25,8 @@ pipeline {
         stage('Check PRODUCTION_IP_ADDRESS') {
             steps {
                 script {
-                    sh 'echo "PRODUCTION_IP_ADDRESS= $PRODUCTION_IP_ADDRESS"'
+                    sh 'PRODUCTION_IP_ADRESSS=$(hostname -i)'
+                    sh 'echo "PRODUCTION_IP_ADDRESS=$PRODUCTION_IP_ADDRESS"'
                 }
             }
         }
