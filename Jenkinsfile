@@ -22,12 +22,10 @@ pipeline {
             }
         }
 
-        stage('Check PRODUCTION_IP_ADRESSS') {
+        stage('Check PRODUCTION_IP_ADRESS') {
             steps {
                 script {
-                    sh '''
-                        echo "PRODUCTION_IP_ADRESS= $PRODUCTION_IP_ADRESS" >> /var/lib/jenkins/PRODUCTION_IP_ADRESS.txt
-                    '''
+                    sh 'echo "PRODUCTION_IP_ADRESS= $PRODUCTION_IP_ADRESS" >> /var/lib/jenkins/PRODUCTION_IP_ADRESS.txt'
                 }
             }
         }
@@ -60,7 +58,7 @@ pipeline {
         stage('Add Host to known_hosts') {
             steps {
                 script {
-                    sh ssh-keyscan -H $PRODUCTION_IP_ADRESS >> /var/lib/jenkins/.ssh/known_hosts
+                    sh ssh-keyscan -H {$PRODUCTION_IP_ADRESS} >> /var/lib/jenkins/.ssh/known_hosts
                 }
             }
         }
