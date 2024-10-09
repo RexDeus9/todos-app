@@ -70,7 +70,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Where are we') {
             steps {
                 script {
                     sh 'pwd > ~/_files.txt'
@@ -78,7 +78,7 @@ pipeline {
                 }
             }
         }
-/*
+
         stage('Deploy') {
                 environment {
                     //DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
@@ -87,7 +87,7 @@ pipeline {
                 steps {
                     sh '''
                         //ssh -v -i $DEPLOY_SSH_KEY ubuntu@$IP_ADDRESS '
-                        ssh -v -i "~/.aws/jenkins-key.pem" ubuntu@ec2-3-85-183-54.compute-1.amazonaws.com '
+                        ssh -v -i "/tmp/jenkins-key.pem" ubuntu@ec2-3-85-183-54.compute-1.amazonaws.com '
 
                             if [ ! -d "todos-app" ]; then
                                 git clone https://github.com/RexDeus9/todos-app todos-app
@@ -108,6 +108,6 @@ pipeline {
                     '''
                 }
         }
-*/
+
     }
 }
