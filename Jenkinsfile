@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     sh 'PRODUCTION_IP_ADRESSS=$(hostname -i)'
-                    sh 'echo PRODUCTION_IP_ADDRESS=$PRODUCTION_IP_ADDRESS'
+                    sh 'echo PRODUCTION_IP_ADDRESS=$PRODUCTION_IP_ADDRESS >> /var/lib/jenkins/PRODUCTION_IP_ADDRESS.txt'
                 }
             }
         }
