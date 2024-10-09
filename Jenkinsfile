@@ -53,7 +53,8 @@ pipeline {
         stage('Stop the App') {
             steps {
                 script {
-                    sh 'pm2 stop todos-app'
+                    sh 'echo "Hello Stop"'
+                    //sh 'pm2 stop todos-app'
                 }
             }
         }
@@ -62,7 +63,8 @@ pipeline {
             steps {
                 script {
                     sh 'sleep 2'
-                    //sh ssh-keyscan -H {$IP_ADDRESS} >> /var/lib/jenkins/.ssh/known_hosts
+                    sh mkdir -p /var/lib/jenkins/.ssh
+                    sh ssh-keyscan -H {$IP_ADDRESS} >> /var/lib/jenkins/.ssh/known_hosts
                 }
             }
         }
