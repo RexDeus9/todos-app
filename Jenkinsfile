@@ -25,8 +25,8 @@ pipeline {
         stage('Check PRODUCTION_IP_ADDRESS') {
             steps {
                 script {
-                    sh 'PRODUCTION_IP_ADRESSS=$(hostname -i)'
-                    sh 'echo PRODUCTION_IP_ADDRESS=$PRODUCTION_IP_ADDRESS >> /var/lib/jenkins/PRODUCTION_IP_ADDRESS.txt'
+                    sh 'PRODUCTION_IP_ADDRESS=$(hostname -i)'
+                    sh 'echo PRODUCTION_IP_ADDRESS=$PRODUCTION_IP_ADDRESS > /var/lib/jenkins/PRODUCTION_IP_ADDRESS.txt'
                 }
             }
         }
