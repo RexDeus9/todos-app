@@ -25,7 +25,9 @@ pipeline {
         stage('Check IP_ADDRESS') {
             steps {
                 script {
+                    sh 'rm -f /var/lib/jenkins/PRODUCTION_IP_ADDRESS.txt'
                     sh 'export IP_ADDRESS=$(hostname -i)'
+                    sh 'echo IP_ADDRESS=$IP_ADDRESS'
                     sh 'echo IP_ADDRESS=$IP_ADDRESS > /var/lib/jenkins/IP_ADDRESS.txt'
                 }
             }
