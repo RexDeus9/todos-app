@@ -81,6 +81,7 @@ pipeline {
 
         stage('AWS_INSTANCE_SSH') {
                 environment {
+                    AWS_INSTANCE_SSH = ec2-3-85-183-54.compute-1.amazonaws.com
                     DEPLOY_SSH_KEY = credentials('AWS_INSTANCE_SSH')
                 }
                 steps {
