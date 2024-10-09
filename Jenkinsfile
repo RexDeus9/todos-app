@@ -63,7 +63,7 @@ pipeline {
             steps {
                 script {
                     sh 'sleep 2'
-                    sh mkdir -p /var/lib/jenkins/.ssh
+                    sh 'mkdir -p /var/lib/jenkins/.ssh'
                     sh ssh-keyscan -H {$IP_ADDRESS} >> /var/lib/jenkins/.ssh/known_hosts
                 }
             }
