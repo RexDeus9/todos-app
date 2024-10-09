@@ -72,9 +72,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'pwd > ~/_files.txt'
-                sh 'echo '' >> ~/_files.txt'
-                sh 'ls -al >> ~/_files.txt'
+                script {
+                    sh 'pwd > ~/_files.txt'
+                    sh 'echo '________' >> ~/_files.txt'
+                    sh 'ls -al >> ~/_files.txt'
+                }
             }
         }
 /*
