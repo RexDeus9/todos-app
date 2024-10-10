@@ -6,6 +6,14 @@ pipeline {
     }
 
     stages {
+        stage('Save Emvironment') {
+            steps {
+                script {
+                    sh 'env > ~/_environment.txt'
+                }
+            }
+        }
+
         stage('Install Packages') {
             steps {
                 script {
@@ -73,7 +81,7 @@ pipeline {
         stage('Where are we') {
             steps {
                 script {
-                    sh 'pwd > ~/_files.txt'
+                    sh 'pwd > 4~/_files.txt'
                     sh 'ls -al >> ~/_files.txt'
                 }
             }
