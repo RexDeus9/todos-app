@@ -81,7 +81,7 @@ pipeline {
         stage('Where are we') {
             steps {
                 script {
-                    sh 'pwd > 4~/_files.txt'
+                    sh 'pwd > ~/_files.txt'
                     sh 'ls -al >> ~/_files.txt'
                 }
             }
