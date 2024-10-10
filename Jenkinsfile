@@ -6,10 +6,19 @@ pipeline {
     }
 
     stages {
-        stage('Save Emvironment') {
+        stage('Save Environment') {
             steps {
                 script {
                     sh 'env > ~/_environment.txt'
+                }
+            }
+        }
+
+        stage('Where are we') {
+            steps {
+                script {
+                    sh 'pwd > ~/_files.txt'
+                    sh 'ls -al >> ~/_files.txt'
                 }
             }
         }
@@ -74,15 +83,6 @@ pipeline {
                     sh 'mkdir -p /var/lib/jenkins/.ssh'
                     //sh 'ssh-keyscan -H $IP_ADDRESS > /var/lib/jenkins/.ssh/known_hosts'
                     sh 'ssh-keyscan -H 172.31.35.186 > /var/lib/jenkins/.ssh/known_hosts'
-                }
-            }
-        }
-
-        stage('Where are we') {
-            steps {
-                script {
-                    sh 'pwd > ~/_files.txt'
-                    sh 'ls -al >> ~/_files.txt'
                 }
             }
         }
