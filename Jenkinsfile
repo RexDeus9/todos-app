@@ -80,30 +80,37 @@ pipeline {
         }
 
         stage('Deploy') {
-                steps {
-                    sh '''
-                        //ssh -v -i $DEPLOY_SSH_KEY ubuntu@$IP_ADDRESS '
-                        //ssh -v -i "/tmp/jenkins-key.pem" ubuntu@ec2-3-85-183-54.compute-1.amazonaws.com '
-                        ssh -v ubuntu@ec2-3-85-183-54.compute-1.amazonaws.com '
+            steps {
+                sh 'echo -e Here we would deploy!'
+            }
+        }
+/*
+        stage('Deploy') {
+            steps {
+                sh '''
+                    //ssh -v -i $DEPLOY_SSH_KEY ubuntu@$IP_ADDRESS '
+                    //ssh -v -i "/tmp/jenkins-key.pem" ubuntu@ec2-3-85-183-54.compute-1.amazonaws.com '
+                    ssh -v ubuntu@ec2-3-85-183-54.compute-1.amazonaws.com '
 
-                            if [ ! -d "todos-app" ]; then
-                                git clone https://github.com/RexDeus9/todos-app todos-app
-                                cd todos-app
-                            else
-                                cd todos-app
-                                git pull
-                            fi
+                        if [ ! -d "todos-app" ]; then
+                            git clone https://github.com/RexDeus9/todos-app todos-app
+                            cd todos-app
+                        else
+                            cd todos-app
+                            git pull
+                        fi
 
-                            yarn install
+                        yarn install
 
-                            if pm2 describe todos-app > /dev/null ; then
-                                pm2 restart todos-app
-                            else
-                                yarn start:pm2
-                            fi
-                        '
-                    '''
+                        if pm2 describe todos-app > /dev/null ; then
+                            pm2 restart todos-app
+                        else
+                            yarn start:pm2
+                        fi
+                    '
+                '''
                 }
         }
+*/
     }
 }
