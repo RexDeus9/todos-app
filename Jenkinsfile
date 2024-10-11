@@ -99,11 +99,11 @@ pipeline {
                     cd /var/lib/jenkins/workspace
                     if [ ! -d "todos-app" ]; then
                         #git clone https://github.com/RexDeus9/todos-app todos-app
-                        cd todos-app
+                        #cd todos-app
                         echo 'git clone'
                         echo 'git clone' > /var/lib/jenkins/workspace/echo.txt
                     else
-                        cd todos-app
+                        #cd todos-app
                         #git pull
                         echo 'git pull'
                         echo 'git pull' > /var/lib/jenkins/workspace/echo.txt
