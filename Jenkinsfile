@@ -84,7 +84,7 @@ pipeline {
                         if [ ! -d "/var/lib/jenkins/.ssh" ]; then
                             mkdir -p /var/lib/jenkins/.ssh
                         fi
-                        //sh 'ssh-keyscan -H $IP_ADDRESS > /var/lib/jenkins/.ssh/known_hosts'
+                        # sh 'ssh-keyscan -H $IP_ADDRESS > /var/lib/jenkins/.ssh/known_hosts'
                         ssh-keyscan -H 172.31.35.186 > /var/lib/jenkins/.ssh/known_hosts
                     '''
                 }
