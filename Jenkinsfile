@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+      buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '2')
+    }
+
     tools {
         nodejs "nodejs"
     }
